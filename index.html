@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Test Bulma percolación</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+	<link rel="stylesheet" href="css/gneral.css">
+	<script src="src/Buttons.js"></script>
+	<script src="https://kit.fontawesome.com/9e771a2ce4.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<section class="hero is-primary">
+		<div class="hero-body">
+			<div class="container">
+				<h1 class="title">
+					Percolación
+				</h1>
+				<h2 class="subtitle">
+					Por: <strong>Francisco Luis Campo.</strong>
+				</h2>
+				<div class="tile is-ancestor m-5">
+					<div class="tile is-8">
+						<div class="tile is-parent">
+							<article class="tile is-child notification is-info is-light">
+								<figure class="image is-5by4">
+									<canvas class="has-ratio" width="450" height="450" id="my-canvas"></canvas>
+								</figure>
+							</article>
+						</div>
+					</div>
+					<div class="tile is-parent">
+						<article class="tile is-child">
+							<div class="content">
+								<div class="field">
+									<label class="label is-small">Probabilidad</label>
+									<div class="control">
+										<input id="my-slider" type="range" min="1" max="10" value="5" class="slider">
+									</div>
+								</div>
+								<div class="field has-addons">
+									<div class="control">
+										<input id="my-input" type="number" class="input is-primary"
+											placeholder="Tamaño de la Matriz" oninput="activateButton()">
+									</div>
+									<div class="control">
+										<button disabled id="btn" type="submit" class="button is-primary is-light"
+											onclick="generarMatriz()">Generar</button>
+									</div>
+								</div>
+							</div>
+						</article>
+					</div>
+				</div>
+				<div id="snackbarS" class="snackbar">
+					<button class="delete" onclick="hide('snackbarS')"></button>
+					Hay percolación
+				</div>
+				<div id="snackbarF" class="snackbar">
+					<button class="delete" onclick="hide('snackbarF')"></button>
+					No hay percolación
+				</div>
+			</div>
+		</div>
+	</section>
+	<footer class="footer notification is-info">
+		<div class="content has-text-centered">
+			<p>
+				Algoritmo de <strong>Percolación</strong> realizado como proyecto de aprendizaje para interiorizarme con
+				<a href="https://bulma.io/">Bulma</a> y el desarrollo web.
+			</p>
+			<a href="https://github.com/FCampo7">
+				<span class="icon-text">
+					<span class="icon">
+						<i class="fa-brands fa-github"></i>
+					</span>
+					<span>Github</span>
+				</span>
+			</a>
+		</div>
+	</footer>
+</body>
+
+</html>
