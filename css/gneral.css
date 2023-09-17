@@ -36,7 +36,8 @@
 	/* Sit on top of the screen */
 	z-index: 1;
 	/* Add a z-index if needed */
-	left: 50%;
+	left: 10%;
+	right: 10%;
 	/* Center the snackbar */
 	bottom: 30px;
 	/* 30px from the bottom */
@@ -45,6 +46,7 @@
 /* Show the snackbar when clicking on a button (class added with JavaScript) */
 .snackbar.show {
 	visibility: visible;
+	text-align: center;
 	/* Show the snackbar */
 	/* Add animation: Take 0.5 seconds to fade in and out the snackbar.
 	However, delay the fade out process for 2.5 seconds */
