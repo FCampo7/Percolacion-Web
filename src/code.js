@@ -73,6 +73,7 @@ function percolar(){
 	return flag;
 }
 
+//activar botón generar
 function activateButton(){
 	let inputtam = document.querySelector('#my-input');
 	let button=document.querySelector('#btn');
@@ -81,6 +82,8 @@ function activateButton(){
 	button.disabled = tam === '';
 }
 
+
+//Dibujar matriz
 function drawSquare() {
 	let canvas = document.querySelector('#my-canvas');
 	let context = canvas.getContext('2d');

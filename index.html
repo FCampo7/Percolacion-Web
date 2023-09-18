@@ -7,23 +7,25 @@
 	<title>Percolación</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 	<link rel="stylesheet" href="css/gneral.css">
-	<script src="src/Buttons.js"></script>
+	<script src="src/code.js"></script>
 	<script src="https://kit.fontawesome.com/9e771a2ce4.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-	<section class="hero is-primary">
+	<section class="hero is-primary has-text-centered">
 		<div class="hero-body">
 			<h1 class="title">
 				Percolación
 			</h1>
 		</div>
 	</section>
+
+
 	<div class="box notification is-warning is-light">
 		<div class="content">
-			<p class="subtitle">
-				Instrucciones de uso:
-			</p>
+			<h3 class="subtitle">
+				Instrucciones de uso
+			</h3>
 			<ul>
 				<li>Ingrese el tamaño de la matriz</li>
 				<li>Seleccione la probabilidad de que un nodo esté lleno</li>
@@ -31,6 +33,8 @@
 			</ul>
 		</div>
 	</div>
+
+
 	<div class="notification box">
 		<div class="tile is-ancestor">
 			<div class="tile is-1">
@@ -38,8 +42,8 @@
 			<div class="tile">
 				<div class="tile is-parent">
 					<article class="tile is-child box">
-						<figure class="image is-4by3">
-							<canvas class="has-ratio" width="300" height="300" id="my-canvas"></canvas>
+						<figure class="image is-5by4">
+							<canvas class="has-ratio" width="200" height="200" id="my-canvas"></canvas>
 						</figure>
 					</article>
 				</div>
@@ -55,11 +59,11 @@
 						</div>
 						<div class="field has-addons">
 							<div class="control is-expanded">
-								<input id="my-input" type="number" class="input is-primary"
+								<input id="my-input" type="number" class="input is-primary" value="10"
 									placeholder="Tamaño de la Matriz" oninput="activateButton()">
 							</div>
 							<div class="control">
-								<button disabled id="btn" type="submit" class="button is-primary is-light"
+								<button id="btn" type="submit" class="button is-primary is-light"
 									onclick="generarMatriz()">Generar</button>
 							</div>
 						</div>
@@ -70,6 +74,7 @@
 			</div>
 		</div>
 	</div>
+
 
 	<footer class="footer notification is-info">
 		<div class="content has-text-centered">
@@ -87,6 +92,8 @@
 			</a>
 		</div>
 	</footer>
+
+	
 	<div id="snackbarS" class="snackbar">
 		<button class="delete" onclick="hide('snackbarS')"></button>
 		Hay percolación
@@ -95,6 +102,7 @@
 		<button class="delete" onclick="hide('snackbarF')"></button>
 		No hay percolación
 	</div>
+
 </body>
 
 </html>
