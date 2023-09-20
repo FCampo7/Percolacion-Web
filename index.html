@@ -63,8 +63,14 @@
 									placeholder="Tamaño de la Matriz" oninput="activateButton()">
 							</div>
 							<div class="control">
-								<button id="btn" type="submit" class="button is-primary is-light"
+								<button id="btnGenerarMatriz" type="submit" class="button is-primary is-light"
 									onclick="generarMatriz()">Generar</button>
+							</div>
+						</div>
+						<div class="field">
+							<div class="control">
+								<button disabled id="btnPercolar" type="submit" class="button is-primary is-light"
+									onclick="percolar()">Percolar</button>
 							</div>
 						</div>
 					</div>
@@ -92,16 +98,6 @@
 			</a>
 		</div>
 	</footer>
-
-	
-	<div id="snackbarS" class="snackbar">
-		<button class="delete" onclick="hide('snackbarS')"></button>
-		Hay percolación
-	</div>
-	<div id="snackbarF" class="snackbar">
-		<button class="delete" onclick="hide('snackbarF')"></button>
-		No hay percolación
-	</div>
 
 </body>
 
