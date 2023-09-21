@@ -4,6 +4,20 @@
  */
 var matriz=[];
 
+
+/**
+ * Activa el botón de generar según la entrada del usuario.
+ */
+function activateButton(){
+	let inputtam = document.querySelector('#my-input');
+	let button=document.querySelector('#btnGenerarMatriz');
+	
+	const tam=inputtam.value;
+
+	button.disabled = tam === '';
+}
+
+
 /**
  * Genera una matriz con un tamaño y una probabilidad especificada para la percolación.
  */
@@ -28,6 +42,7 @@ function generarMatriz(){
 	drawMatrix();
 	buttonPercolar.disabled = false;
 }
+
 
 /**
  * Crea y muestra un Snackbar con el resultado de la percolación.
@@ -65,6 +80,7 @@ function createSnackbars(flag) {
 		}, 3000
 	);
 }
+
 
 /**
  * Realiza la percolación en la matriz y muestra el resultado en un Snackbar.
@@ -117,18 +133,6 @@ function percolar(){
 
 }
 
-/**
- * Activa el botón de generar según la entrada del usuario.
- */
-function activateButton(){
-	let inputtam = document.querySelector('#my-input');
-	let button=document.querySelector('#btnGenerarMatriz');
-	
-	const tam=inputtam.value;
-
-	button.disabled = tam === '';
-}
-
 
 /**
  * Dibuja la matriz en un canvas.
@@ -161,6 +165,7 @@ function drawMatrix() {
 		}
 	}
 }
+
 
 /**
  * Dibuja un cuadrado azul en una posición dada.
