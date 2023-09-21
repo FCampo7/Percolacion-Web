@@ -9,12 +9,62 @@ var matriz=[];
  * Activa el botón de generar según la entrada del usuario.
  */
 function activateButton(){
-	let inputtam = document.querySelector('#my-input');
+	let inputTam = document.querySelector('#my-input');
 	let button=document.querySelector('#btnGenerarMatriz');
 	
-	const tam=inputtam.value;
+	const tam=inputTam.value;
 
 	button.disabled = tam === '';
+}
+
+
+/**
+ * Dibuja un cuadrado de color especificado en una posición dada.
+ * @param {number} posX - Posición en el eje x.
+ * @param {number} posY - Posición en el eje y.
+ * @param {string} color - Color del cuadrado.
+ */
+function drawSquare(posX, posY, color){
+	let canvas = document.querySelector('#my-canvas');
+	let context = canvas.getContext('2d');
+	let inputTam = document.querySelector('#my-input');
+
+	const tam=inputTam.value;
+
+	const side=Math.min(canvas.height,canvas.width)/tam;
+
+	context.beginPath();
+	
+	context.fillStyle=color;
+	context.rect(posX*side, posY*side, side, side);
+	context.fillRect(posX*side+1, posY*side+1, side-1, side-1);
+	
+	context.stroke();
+}
+
+
+/**
+ * Dibuja la matriz en un canvas.
+ */
+function drawMatrix() {
+	let canvas = document.querySelector('#my-canvas');
+	let context = canvas.getContext('2d');
+	let inputTam = document.querySelector('#my-input');
+
+	const tam=inputTam.value;
+	
+	context.clearRect(0, 0, canvas.width, canvas.height);
+
+	for(let i=0; i<tam; i++){
+		for(let j=0; j<tam; j++){
+			if(matriz[i][j]==1){
+				drawSquare(i, j, "black");
+			}
+			else if(matriz[i][j]==0){
+				drawSquare(i, j, "white");
+			}
+		}
+	}
 }
 
 
@@ -23,10 +73,10 @@ function activateButton(){
  */
 function generarMatriz(){
 	const buttonPercolar=document.querySelector('#btnPercolar');
-	let inputtam = document.querySelector('#my-input');
+	let inputTam = document.querySelector('#my-input');
 	let slider = document.querySelector('#my-slider');
 
-	const tam=inputtam.value;
+	const tam=inputTam.value;
 	const probabilidad=slider.value;
 	
 	// Crea la matriz a percolar
@@ -93,26 +143,26 @@ function percolar(){
 	
 	/**
 	 * Realiza el algoritmo de percolación en la matriz, iniciando desde la posición dada.
-	 * @param {number} posx - Posición en el eje x.
-	 * @param {number} posy - Posición en el eje y.
+	 * @param {number} posX - Posición en el eje x.
+	 * @param {number} posY - Posición en el eje y.
 	 */
-	function __percolar(posx, posy){
+	function __percolar(posX, posY){
 		// Condiciones de salida (Que los valores de "x" e "y" excedan el tamaóo de la matriz o que la matriz en la posición dada sea != 0)
-		if (posx < 0 || posy < 0 || posx >= matriz.length || posy >= matriz[0].length || matriz[posx][posy] != 0)
+		if (posX < 0 || posY < 0 || posX >= matriz.length || posY >= matriz[0].length || matriz[posX][posY] != 0)
 			return;
 	
 		// Asigna un valor 2 en la posición "x" e "y" de la matriz que sera representado como agua
-		matriz[posx][posy] = 2;
+		matriz[posX][posY] = 2;
 		
 		// Dibuja el cuadrado en la posición "x" e "y"
 		// No interviene en el algoritmo de percolación
-		drawSquareAqua(posx, posy);
+		drawSquare(posX, posY, "aqua");
 		
 		// Pasa a las posiciones adyacentes
-		__percolar(posx, posy + 1);
-		__percolar(posx + 1, posy);
-		__percolar(posx - 1, posy);
-		__percolar(posx, posy - 1);
+		__percolar(posX, posY + 1);
+		__percolar(posX + 1, posY);
+		__percolar(posX - 1, posY);
+		__percolar(posX, posY - 1);
 	}
 	
 	for(let i=0; i<matriz.length; i++){
@@ -131,61 +181,4 @@ function percolar(){
 
 	createSnackbars(flag);
 
-}
-
-
-/**
- * Dibuja la matriz en un canvas.
- */
-function drawMatrix() {
-	let canvas = document.querySelector('#my-canvas');
-	let context = canvas.getContext('2d');
-	let inputtam = document.querySelector('#my-input');
-
-	const tam=inputtam.value;
-
-	const side=Math.min(canvas.height,canvas.width)/tam;
-	
-	context.clearRect(0, 0, canvas.width, canvas.height);
-
-	context.beginPath();
-	for(let i=0; i<tam; i++){
-		for(let j=0; j<tam; j++){
-			if(matriz[i][j]==1){
-				context.fillStyle="black";
-				context.rect(i*side, j*side, side, side);
-				context.fillRect(i*side+1, j*side+1, side-1, side-1);
-			}
-			else if(matriz[i][j]==0){
-				context.fillStyle="white";
-				context.rect(i*side, j*side, side, side);
-				context.fillRect(i*side+1, j*side+1, side-1, side-1);
-			}
-			context.stroke();
-		}
-	}
-}
-
-
-/**
- * Dibuja un cuadrado azul en una posición dada.
- * @param {number} posx - Posición en el eje x.
- * @param {number} posy - Posición en el eje y.
- */
-function drawSquareAqua(posx, posy){
-	let canvas = document.querySelector('#my-canvas');
-	let context = canvas.getContext('2d');
-	let inputtam = document.querySelector('#my-input');
-
-	const tam=inputtam.value;
-
-	const side=Math.min(canvas.height,canvas.width)/tam;
-
-	context.beginPath();
-	
-	context.fillStyle="aqua";
-	context.rect(posx*side, posy*side, side, side);
-	context.fillRect(posx*side+1, posy*side+1, side-1, side-1);
-	
-	context.stroke();
 }
